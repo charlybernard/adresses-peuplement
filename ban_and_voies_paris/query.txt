@@ -1,0 +1,237 @@
+PREFIX addr: <http://rdf.geohistoricaldata.org/address#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+
+DELETE {
+  ?sub ?p ?landmark.
+  ?landmark ?p ?obj.
+}
+INSERT {GRAPH <http://data.example.org/addresses> {
+  ?sub ?p ?id.
+  ?id ?p ?obj.
+}}
+WHERE {
+  SELECT ?landmark ?id ?obj ?p ?sub WHERE {
+    GRAPH <http://data.example.org/addresses> {?landmark addr:isLandmarkType addr:District;
+      rdfs:label ?l;
+      addr:within ?w.}
+    FILTER((LANG(?l)) = "fr")
+    { ?landmark ?p ?obj. }
+    UNION
+    { ?sub ?p ?landmark. }
+    {
+      SELECT ?l ?w ?id WHERE {
+        BIND(URI(CONCAT("http://rdf.geohistoricaldata.org/address#", STRUUID())) AS ?id)
+        {
+          SELECT DISTINCT ?l ?w WHERE {
+            ?s addr:isLandmarkType addr:District;
+              rdfs:label ?l;
+              addr:within ?w.
+              ?w addr:isLandmarkType addr:City.
+            FILTER((LANG(?l)) = "fr")
+          }
+          GROUP BY ?l ?w
+        }
+      }
+    }
+  }
+};
+
+DELETE {
+  ?sub ?p ?landmark.
+  ?landmark ?p ?obj.
+}
+INSERT {GRAPH <http://data.example.org/addresses> {
+  ?sub ?p ?id.
+  ?id ?p ?obj.
+}}
+WHERE {
+  SELECT ?landmark ?id ?obj ?p ?sub WHERE {
+    GRAPH <http://data.example.org/addresses> {?landmark addr:isLandmarkType addr:Thoroughfare;
+      rdfs:label ?l;
+      addr:within [addr:within ?w].}		
+    { ?landmark ?p ?obj. }
+    UNION
+    { ?sub ?p ?landmark. }
+    {
+      SELECT ?l ?w ?id WHERE {
+        BIND(URI(CONCAT("http://rdf.geohistoricaldata.org/address#", STRUUID())) AS ?id)
+        {
+          SELECT DISTINCT ?l ?w WHERE {
+            ?s addr:isLandmarkType addr:Thoroughfare;
+              rdfs:label ?l;
+              addr:within [addr:within ?w].
+              ?w addr:isLandmarkType addr:City.
+                        FILTER((LANG(?l)) = "fr")
+          }
+          GROUP BY ?l ?w
+        }
+      }
+    }
+  }
+} ;
+
+INSERT {GRAPH <http://data.example.org/streets> {
+  ?district rdfs:label ?label.
+}
+}
+    WHERE{
+SELECT ?district ?label WHERE {
+    GRAPH <http://data.example.org/streets> {
+        ?district addr:isLandmarkType addr:District.
+        BIND(STRLANG(REPLACE(REPLACE(REPLACE(STR(?district), "http://rdf.geohistoricaldata.org/address#", ""), "_(0|)", " "), "$", " arrondissement"), "fr") AS ?label)
+    }
+}} ;
+
+INSERT DATA {GRAPH <http://data.example.org/streets> {
+  addr:Paris_01e rdfs:label "Paris 1er arrondissement"@fr.
+    }} ;
+
+DELETE {
+  ?sub ?p ?landmark.
+  ?landmark ?p ?obj.
+    }
+INSERT {GRAPH <http://data.example.org/streets> {
+  ?sub ?p ?id.
+  ?id ?p ?obj.
+    }}
+WHERE {
+  SELECT ?landmark ?id ?obj ?p ?sub WHERE {
+    GRAPH <http://data.example.org/streets> {?landmark addr:isLandmarkType addr:Undefined;
+      rdfs:label ?l.}
+    { ?landmark ?p ?obj. }
+    UNION
+    { ?sub ?p ?landmark. }
+    {
+      SELECT ?l ?id WHERE {
+        BIND(URI(CONCAT("http://rdf.geohistoricaldata.org/address#", STRUUID())) AS ?id)
+        {
+          SELECT DISTINCT ?l WHERE {
+            ?landmark addr:isLandmarkType addr:Undefined;
+              rdfs:label ?l.
+          }
+          GROUP BY ?l
+        }
+      }
+    }
+  }
+} ;
+
+
+INSERT {GRAPH <http://data.example.org/streets> {
+    ?landmark addr:isSimilar ?housenumberId.
+    ?housenumberId a addr:Landmark; addr:isLandmarkType addr:HouseNumber; rdfs:label ?housenumberLabel; addr:isPartOf ?streetId.
+    ?streetId a addr:Landmark; addr:isLandmarkType addr:Thoroughfare; rdfs:label ?streetLabel.
+}}
+WHERE{
+SELECT ?landmark ?label (URI(CONCAT("http://rdf.geohistoricaldata.org/address#", STRUUID())) AS ?streetId) ?streetLabel (URI(CONCAT("http://rdf.geohistoricaldata.org/address#", STRUUID())) AS ?housenumberId) ?housenumberLabel WHERE {
+    ?landmark addr:isLandmarkType addr:Undefined ; rdfs:label ?label.
+    BIND (REPLACE (?label, "\\.", "") AS ?n_label)
+    BIND (strbefore(?n_label,",") as ?streetLabel) 
+    BIND (STR(strafter(?n_label,",")) as ?housenumberLabel)
+    }} ;
+    
+DELETE {
+  ?sub ?p ?landmark.
+  ?landmark ?p ?obj.
+}
+INSERT {GRAPH <http://data.example.org/streets> {
+  ?sub ?p ?id.
+  ?id ?p ?obj.
+}}
+WHERE {
+  SELECT ?landmark ?id ?obj ?p ?sub WHERE {
+    GRAPH <http://data.example.org/streets> {?landmark addr:isLandmarkType addr:Thoroughfare;
+      rdfs:label ?l.}		
+    { ?landmark ?p ?obj. }
+    UNION
+    { ?sub ?p ?landmark. }
+    {
+      SELECT ?l ?w ?id WHERE {
+        BIND(URI(CONCAT("http://rdf.geohistoricaldata.org/address#", STRUUID())) AS ?id)
+        {
+          SELECT DISTINCT ?l WHERE {
+            GRAPH <http://data.example.org/streets> {?s addr:isLandmarkType addr:Thoroughfare;
+              rdfs:label ?l.}
+          }
+          GROUP BY ?l 
+        }
+      }
+    }
+  }
+} ;
+
+DELETE {
+  ?sub ?p ?landmarkG1.
+  ?landmarkG1 ?p ?obj.
+}
+INSERT {GRAPH <http://data.example.org/streets> {
+  ?sub ?p ?landmarkG2.
+  ?landmarkG2 ?p ?obj.
+}}
+WHERE{
+SELECT ?landmarkG1 ?landmarkG2 ?sub ?p ?obj WHERE {
+    GRAPH <http://data.example.org/streets> {?landmarkG1 addr:isLandmarkType addr:District; rdfs:label ?lg1_label.}
+    GRAPH <http://data.example.org/addresses> {?landmarkG2 addr:isLandmarkType addr:District; rdfs:label ?lg2_label.}
+    BIND(LCASE(?lg1_label) as ?lg1_name).
+    BIND(LCASE(?lg2_label) as ?lg2_name).
+    FILTER (?lg1_name = ?lg2_name)
+    FILTER (?landmarkG1 != ?landmarkG2)
+	{?landmarkG1 ?p ?obj}UNION{?sub ?p ?landmarkG1}
+    }
+} ;
+
+
+DELETE {
+  ?sub ?p ?landmarkG1.
+  ?landmarkG1 ?p ?obj.
+}
+INSERT {GRAPH <http://data.example.org/streets> {
+  ?sub ?p ?landmarkG2.
+  ?landmarkG2 ?p ?obj.
+}}
+WHERE{
+SELECT DISTINCT ?landmarkG1 ?landmarkG2 ?sub ?p ?obj WHERE {
+    GRAPH <http://data.example.org/streets> {?landmarkG1 addr:isLandmarkType addr:Thoroughfare; addr:within ?district; rdfs:label ?lg1_label}.
+    GRAPH <http://data.example.org/addresses> {?landmarkG2 addr:isLandmarkType addr:Thoroughfare; addr:within ?district; rdfs:label ?lg2_label}.
+    BIND(LCASE(?lg1_label) as ?lg1_name).
+    BIND(LCASE(?lg2_label) as ?lg2_name).
+    FILTER (?lg1_name = ?lg2_name)
+    FILTER (?landmarkG1 != ?landmarkG2)
+	{?landmarkG1 ?p ?obj}UNION{?sub ?p ?landmarkG1}
+    }
+} ;
+
+
+DELETE {
+  ?sub ?p ?landmarkG1.
+  ?landmarkG1 ?p ?obj.
+}
+INSERT {GRAPH <http://data.example.org/streets> {
+  ?sub ?p ?landmarkG2.
+  ?landmarkG2 ?p ?obj.
+}}
+WHERE{
+SELECT ?landmarkG1 ?landmarkG2 ?sub ?p ?obj WHERE {
+    GRAPH <http://data.example.org/streets> {?landmarkG1 addr:isLandmarkType addr:HouseNumber}
+    GRAPH <http://data.example.org/addresses> {?landmarkG2 addr:isLandmarkType addr:HouseNumber}
+    ?landmarkG1 addr:isPartOf ?thoroughfare; rdfs:label ?lg1_label.
+    ?landmarkG2 addr:isPartOf ?thoroughfare; rdfs:label ?lg2_label.
+    BIND(STR(REPLACE(LCASE(?lg1_label), " ", "")) as ?lg1_name).
+    BIND(STR(REPLACE(LCASE(?lg2_label), " ", "")) as ?lg2_name).
+    FILTER (?lg1_name = ?lg2_name)
+	{?landmarkG1 ?p ?obj}UNION{?sub ?p ?landmarkG1}
+}
+};
+
+INSERT {GRAPH <http://data.example.org/streets> {
+  ?street geo:asWKT ?linestring.
+}}
+WHERE{
+SELECT ?street ?linestring WHERE {
+    ?street addr:isLandmarkType addr:Thoroughfare; addr:startsAt [addr:isSimilar [geo:asWKT ?pt1]]; addr:endsAt [addr:isSimilar [geo:asWKT ?pt2]].
+    BIND (REPLACE(REPLACE(STR(?pt1), "<http://www.opengis.net/def/crs/EPSG/0/4326> POINT \\(", ""), "\\)", "") as ?pt1str) 
+    BIND (REPLACE(REPLACE(STR(?pt2), "<http://www.opengis.net/def/crs/EPSG/0/4326> POINT \\(", ""), "\\)", "") as ?pt2str) 
+    BIND (CONCAT("<http://www.opengis.net/def/crs/EPSG/0/4326> LINESTRING(", ?pt1str, ",", ?pt2str, ")") AS ?linestring)
+}
+}
