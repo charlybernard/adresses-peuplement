@@ -1,0 +1,142 @@
+PREFIX addr: <http://rdf.geohistoricaldata.org/address#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+
+
+INSERT {
+  ?district rdfs:label ?label.
+}
+    WHERE{
+SELECT ?district ?label WHERE {
+        ?district addr:isLandmarkType addr:District.
+        BIND(STRLANG(REPLACE(REPLACE(REPLACE(STR(?district), "http://rdf.geohistoricaldata.org/address#", ""), "_(0|)", " "), "$", " arrondissement"), "fr") AS ?label)
+    }
+} ;
+
+INSERT DATA {
+  addr:Paris_01e rdfs:label "Paris 1er arrondissement"@fr.
+    } ;
+
+DELETE {
+  ?sub ?p ?landmark.
+  ?landmark ?p ?obj.
+    }
+INSERT {
+  ?sub ?p ?id.
+  ?id ?p ?obj.
+    }
+WHERE {
+  SELECT ?landmark ?id ?obj ?p ?sub WHERE {
+    ?landmark addr:isLandmarkType addr:Undefined;
+      rdfs:label ?l.
+    { ?landmark ?p ?obj. }
+    UNION
+    { ?sub ?p ?landmark. }
+    {
+      SELECT ?l ?id WHERE {
+        BIND(URI(CONCAT("http://rdf.geohistoricaldata.org/address#", STRUUID())) AS ?id)
+        {
+          SELECT DISTINCT ?l WHERE {
+            ?landmark addr:isLandmarkType addr:Undefined;
+              rdfs:label ?l.
+          }
+          GROUP BY ?l
+        }
+      }
+    }
+  }
+} ;
+
+
+INSERT {
+    ?landmark addr:isSimilar ?landmarkId1.
+    ?landmarkId1 a addr:Landmark; addr:isLandmarkType ?landmarkType1; rdfs:label ?landmarkLabel1; addr:isPartOf ?landmarkId2.
+    ?landmarkId2 a addr:Landmark; addr:isLandmarkType ?landmarkType2; rdfs:label ?landmarkLabel2.
+}
+WHERE{
+SELECT ?landmark ?landmarkLabel1 ?landmarkType1 (URI(CONCAT("http://rdf.geohistoricaldata.org/address#", STRUUID())) AS ?landmarkId1) ?landmarkLabel2 ?landmarkType2 (URI(CONCAT("http://rdf.geohistoricaldata.org/address#", STRUUID())) AS ?landmarkId2) WHERE {
+    ?landmark addr:isLandmarkType addr:Undefined ; rdfs:label ?label.
+    BIND (REPLACE (?label, "\\.", "") AS ?n_label)
+    BIND (strbefore(?n_label,", ") as ?streetLabelTmp)
+    BIND (STR(strafter(?n_label,", ")) as ?housenumberLabelTmp)
+    BIND (IF(STR(?streetLabelTmp) = "", ?n_label, ?streetLabelTmp) AS ?streetLabel)
+    BIND (IF(STR(?housenumberLabelTmp) = "", ?x, ?housenumberLabelTmp) AS ?housenumberLabel)
+    BIND (IF(BOUND(?housenumberLabel), ?housenumberLabel, ?streetLabel) AS ?landmarkLabel1)
+    BIND (IF(BOUND(?housenumberLabel), addr:HouseNumber, addr:Thoroughfare) AS ?landmarkType1)
+    BIND (IF(BOUND(?housenumberLabel), ?streetLabel, ?x) AS ?landmarkLabel2)
+    BIND (IF(BOUND(?housenumberLabel), addr:Thoroughfare, addr:Undefined) AS ?landmarkType2)
+    }} ;
+
+DELETE {
+  ?sub ?p ?landmark.
+  ?landmark ?p ?obj.
+}
+WHERE {
+    SELECT ?landmark ?sub ?p ?obj WHERE {
+    ?street addr:isSimilar [addr:isPartOf ?landmark].
+    ?landmark addr:isLandmarkType addr:Undefined.
+    { ?landmark ?p ?obj. }
+    UNION
+    { ?sub ?p ?landmark. }
+}
+} ;
+
+DELETE {
+  ?sub ?p ?landmark.
+  ?landmark ?p ?obj.
+}
+INSERT {
+  ?sub ?p ?id.
+  ?id ?p ?obj.
+}
+WHERE {
+  SELECT ?landmark ?id ?obj ?p ?sub WHERE {
+    ?landmark addr:isLandmarkType addr:Thoroughfare;
+      rdfs:label ?l.	
+    { ?landmark ?p ?obj. }
+    UNION
+    { ?sub ?p ?landmark. }
+    {
+      SELECT ?l ?w ?id WHERE {
+        BIND(URI(CONCAT("http://rdf.geohistoricaldata.org/address#", STRUUID())) AS ?id)
+        {
+          SELECT DISTINCT ?l WHERE {
+            ?s addr:isLandmarkType addr:Thoroughfare; rdfs:label ?l.
+          }
+          GROUP BY ?l 
+        }
+      }
+    }
+  }
+} ;
+
+
+DELETE {
+  ?sub ?p ?landmark.
+  ?landmark ?p ?obj.
+}
+INSERT {
+  ?sub ?p ?id.
+  ?id ?p ?obj.
+}
+WHERE {
+SELECT ?landmark ?id ?obj ?p ?sub WHERE {
+    ?landmark addr:isLandmarkType addr:HouseNumber; addr:isPartOf ?w; rdfs:label ?l.	
+    { ?landmark ?p ?obj. }
+    UNION
+    { ?sub ?p ?landmark. }
+    {
+      SELECT ?l ?w ?id WHERE {
+        BIND(URI(CONCAT("http://rdf.geohistoricaldata.org/address#", STRUUID())) AS ?id)
+        {
+          SELECT DISTINCT ?l ?w WHERE {
+            ?s addr:isLandmarkType addr:HouseNumber; addr:isPartOf ?w; rdfs:label ?l.
+          }
+          GROUP BY ?l ?w
+        }
+      }
+    }
+  }
+}
+
+
