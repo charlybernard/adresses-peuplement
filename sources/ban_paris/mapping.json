@@ -1,0 +1,1402 @@
+{
+  "baseIRI": "http://rdf.geohistoricaldata.org/address#",
+  "namespaces": {
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "fantoir": "http://example.org/fantoir#",
+    "insee": "http://rdf.insee.fr/def/geo#",
+    "addr": "http://rdf.geohistoricaldata.org/address#",
+    "geo": "http://www.opengis.net/ont/geosparql#"
+  },
+  "subjectMappings": [
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdfs",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "cells[\"numero\"].value + if(cells[\"rep\"].value != null, cells[\"rep\"].value, \"\") + \" \" + cells[\"nom_voie\"].value + \", \" + cells[\"code_postal\"].value + \" \" + cells[\"nom_commune\"].value",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "fr"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "firstStep"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr:AddrSeg1_",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "id",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "targets"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr:HN_",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "id",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "addr:ADDR_",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "id",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "addr",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Address"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isLandmarkType"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "Thoroughfare"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "owl",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "sameAs"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "fantoir",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "id_fantoir",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "within"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr:MA_",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "id",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdfs",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "nom_voie",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "fr"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "addr:TH_",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "id",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "addr",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Landmark"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isLandmarkType"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "District"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "owl",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "sameAs"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "insee",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "code_insee",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "within"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "FC_90"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdfs",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "nom_commune",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "fr"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "addr:MA_",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "id",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "addr",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Landmark"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isLandmarkType"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "HouseNumber"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdfs",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "cells[\"numero\"].value + if(cells[\"rep\"].value != null, cells[\"rep\"].value, \"\")",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isPartOf"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr:TH_",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "id",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "geo",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "asWKT"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT (\" + cells[\"lon\"].value + \" \" + cells[\"lat\"].value + \")\"",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "geo",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "wktLiteral"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "addr:HN_",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "id",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "addr",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Landmark"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isLandmarkType"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "PostalCode"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdfs",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "code_postal",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "within"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "P_142"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "addr:CP_",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "id",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "addr",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Landmark"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isLandmarkType"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "Country"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdfs",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "source": "constant",
+                "constant": "France"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "fr"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "addr",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "source": "constant",
+          "constant": "P_142"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "addr",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Landmark"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "nextStep"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr:AddrSeg2_",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "id",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "locatum"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr:HN_",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "id",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "relatum"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr:HN_",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "id",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isSpatialRelationType"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "IsSimilar"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "addr:AddrSeg1_",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "id",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "addr",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "AddressSegment"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "nextStep"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr:AddrSeg3_",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "id",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "locatum"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr:HN_",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "id",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "relatum"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr:TH_",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "id",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isSpatialRelationType"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "isPartOf"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "addr:AddrSeg2_",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "id",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "addr",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "AddressSegment"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "nextStep"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr:AddrSeg4_",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "id",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "locatum"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr:HN_",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "id",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "relatum"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr:MA_",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "id",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isSpatialRelationType"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "Within"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "addr:AddrSeg3_",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "id",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "addr",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "AddressSegment"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "locatum"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr:HN_",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "id",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "relatum"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr:CP_",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "id",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isSpatialRelationType"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "Within"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "addr:AddrSeg4_",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "id",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "addr",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "FinalAddressSegment"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "within"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "P_142"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdfs",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "source": "constant",
+                "constant": "Paris"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "fr"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isLandmarkType"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "City"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "addr",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "source": "constant",
+          "constant": "FC_90"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "addr",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Landmark"
+          }
+        }
+      ]
+    }
+  ]
+}

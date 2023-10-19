@@ -1,0 +1,1209 @@
+{
+  "baseIRI": "http://example.com/base/",
+  "namespaces": {
+    "addr": "http://rdf.geohistoricaldata.org/address#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "geo": "http://www.opengis.net/ont/geosparql#"
+  },
+  "subjectMappings": [
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdfs",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "cells[\"jusho2\"].value + \"-\" + cells[\"jusho3\"].value +\", Yaesu \" + cells[\"jusho1\"].value + \"-Chome, \" + cells[\"city_code\"].value + \", 東京都\"",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "ja"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "targets"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"http://rdf.geohistoricaldata.org/address#J3_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "firstStep"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"http://rdf.geohistoricaldata.org/address#AddrSeg1_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "\"http://rdf.geohistoricaldata.org/address#Addr_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "addr",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Address"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isLandmarkType"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "PostalCode"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdfs",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "city_code",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "within"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "P_Tokyo"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "\"http://rdf.geohistoricaldata.org/address#CC_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "addr",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Landmark"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isLandmarkType"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "District"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdfs",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "jusho1",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "ja"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "within"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"http://rdf.geohistoricaldata.org/address#CC_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "\"http://rdf.geohistoricaldata.org/address#J1_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "addr",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Landmark"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isLandmarkType"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "District"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdfs",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "jusho2",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "within"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"http://rdf.geohistoricaldata.org/address#J1_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "\"http://rdf.geohistoricaldata.org/address#J2_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "addr",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Landmark"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isLandmarkType"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "DistrictNumber"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdfs",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "jusho3",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isPartOf"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"http://rdf.geohistoricaldata.org/address#J2_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "geo",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "asWKT"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT (\" + cells[\"lon\"].value + \" \" + cells[\"lat\"].value + \")\"",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "geo",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "wktLiteral"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "\"http://rdf.geohistoricaldata.org/address#J3_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "addr",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Landmark"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isLandmarkType"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "City"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdfs",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "source": "constant",
+                "constant": "Tokyo"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "en"
+                  }
+                }
+              }
+            },
+            {
+              "valueSource": {
+                "source": "constant",
+                "constant": "東京都"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "ja"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "addr",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "source": "constant",
+          "constant": "P_Tokyo"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "addr",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Landmark"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "locatum"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"http://rdf.geohistoricaldata.org/address#J3_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "relatum"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"http://rdf.geohistoricaldata.org/address#J3_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isSpatialRelationType"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "IsSimilar"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "nextStep"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"http://rdf.geohistoricaldata.org/address#AddrSeg2_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "\"http://rdf.geohistoricaldata.org/address#AddrSeg1_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "addr",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "AddressSegment"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "locatum"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"http://rdf.geohistoricaldata.org/address#J3_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "relatum"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"http://rdf.geohistoricaldata.org/address#J2_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isSpatialRelationType"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "IsPartOf"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "nextStep"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"http://rdf.geohistoricaldata.org/address#AddrSeg3_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "\"http://rdf.geohistoricaldata.org/address#AddrSeg2_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "addr",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "AddressSegment"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "locatum"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"http://rdf.geohistoricaldata.org/address#J3_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "relatum"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"http://rdf.geohistoricaldata.org/address#J1_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isSpatialRelationType"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "Within"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "nextStep"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"http://rdf.geohistoricaldata.org/address#AddrSeg4_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "\"http://rdf.geohistoricaldata.org/address#AddrSeg3_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "addr",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "AddressSegment"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "locatum"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"http://rdf.geohistoricaldata.org/address#J3_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "relatum"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"http://rdf.geohistoricaldata.org/address#PC_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "addr",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isSpatialRelationType"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "addr",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "Within"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "\"http://rdf.geohistoricaldata.org/address#AddrSeg4_\" + cells[\"jcode1\"].value.replace(\"http://gi.gsi.go.jp/jusho/\", \"\").replace(\"/\",\"_\")",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "addr",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "FinalAddressSegment"
+          }
+        }
+      ]
+    }
+  ]
+}

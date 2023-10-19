@@ -1,0 +1,148 @@
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <https://schema.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX topo: <http://data.ign.fr/def/topo#>
+PREFIX addr: <http://rdf.geohistoricaldata.org/address#>
+PREFIX geom: <http://data.ign.fr/def/geometrie#> 
+PREFIX crs: <http://data.ign.fr/def/ignf/crs/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX gsp: <http://www.opengis.net/ont/geosparql#>
+PREFIX gspf: <http://www.opengis.net/def/function/geosparql/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+DELETE {
+  ?sub ?p ?landmark.
+  ?landmark ?p ?obj.
+}
+INSERT {
+  ?sub ?p ?id.
+  ?id ?p ?obj.
+}
+WHERE {
+  SELECT ?landmark ?id ?obj ?p ?sub WHERE {
+    ?landmark addr:isLandmarkType addr:PostalCode;
+      rdfs:label ?l;
+      addr:within ?w.
+    { ?landmark ?p ?obj. }
+    UNION
+    { ?sub ?p ?landmark. }
+    {
+      SELECT ?l ?w ?id WHERE {
+        BIND(URI(CONCAT("http://rdf.geohistoricaldata.org/address#", STRUUID())) AS ?id)
+        {
+          SELECT DISTINCT ?l ?w WHERE {
+            ?s addr:isLandmarkType addr:PostalCode;
+              rdfs:label ?l;
+              addr:within ?w.
+          }
+          GROUP BY ?l ?w
+        }
+      }
+    }
+  }
+};
+
+DELETE {
+  ?sub ?p ?landmark.
+  ?landmark ?p ?obj.
+}
+INSERT {
+  ?sub ?p ?id.
+  ?id ?p ?obj.
+}
+WHERE {
+  SELECT ?landmark ?id ?obj ?p ?sub WHERE {
+    ?landmark addr:isLandmarkType addr:District;
+      rdfs:label ?l;
+      addr:within ?w.
+      ?w addr:isLandmarkType addr:PostalCode.
+    { ?landmark ?p ?obj. }
+    UNION
+    { ?sub ?p ?landmark. }
+    {
+      SELECT ?l ?w ?id WHERE {
+        BIND(URI(CONCAT("http://rdf.geohistoricaldata.org/address#", STRUUID())) AS ?id)
+        {
+          SELECT DISTINCT ?l ?w WHERE {
+            ?s addr:isLandmarkType addr:District;
+              rdfs:label ?l;
+              addr:within ?w.
+            ?w addr:isLandmarkType addr:PostalCode.
+          }
+          GROUP BY ?l ?w
+        }
+      }
+    }
+  }
+} ;
+
+DELETE {
+  ?sub ?p ?landmark.
+  ?landmark ?p ?obj.
+}
+INSERT {
+  ?sub ?p ?id.
+  ?id ?p ?obj.
+}
+WHERE {
+  SELECT ?landmark ?id ?obj ?p ?sub WHERE {
+    ?landmark addr:isLandmarkType addr:District;
+      rdfs:label ?l;
+      addr:within ?w.
+      ?w addr:isLandmarkType addr:District.
+    { ?landmark ?p ?obj. }
+    UNION
+    { ?sub ?p ?landmark. }
+    {
+      SELECT ?l ?w ?id WHERE {
+        BIND(URI(CONCAT("http://rdf.geohistoricaldata.org/address#", STRUUID())) AS ?id)
+        {
+          SELECT DISTINCT ?l ?w WHERE {
+            ?s addr:isLandmarkType addr:District;
+              rdfs:label ?l;
+              addr:within ?w.
+            ?w addr:isLandmarkType addr:District.
+          }
+          GROUP BY ?l ?w
+        }
+      }
+    }
+  }
+} ;
+
+
+DELETE {
+  ?sub ?p ?landmark.
+  ?landmark ?p ?obj.
+}
+INSERT {
+  ?sub ?p ?id.
+  ?id ?p ?obj.
+}
+WHERE {
+  SELECT ?landmark ?id ?obj ?p ?sub WHERE {
+    ?landmark addr:isLandmarkType addr:DistrictNumber;
+      rdfs:label ?l;
+      addr:within ?w.
+      ?w addr:isLandmarkType addr:District.
+    { ?landmark ?p ?obj. }
+    UNION
+    { ?sub ?p ?landmark. }
+    {
+      SELECT ?l ?w ?id WHERE {
+        BIND(URI(CONCAT("http://rdf.geohistoricaldata.org/address#", STRUUID())) AS ?id)
+        {
+          SELECT DISTINCT ?l ?w WHERE {
+            ?s addr:isLandmarkType addr:DistrictNumber;
+              rdfs:label ?l;
+              addr:within ?w.
+            ?w addr:isLandmarkType addr:District.
+          }
+          GROUP BY ?l ?w
+        }
+      }
+    }
+  }
+}
