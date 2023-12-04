@@ -22,7 +22,7 @@
           "values": [
             {
               "transformation": {
-                "expression": "cells[\"addr_street\"].value + \" \" + cells[\"addr_housenumber\"].value + \", \" + cells[\"addr_postcode\"].value +  \"  \" +  cells[\"addr_conscription\"].value",
+                "expression": "cells[\"addr_street\"].value + \" \" + cells[\"addr_housenumber\"].value + \", \" + cells[\"addr_postcode\"].value +  \" \" +  cells[\"addr_conscription\"].value",
                 "language": "grel"
               },
               "valueSource": {
@@ -58,7 +58,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -87,7 +87,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -105,7 +105,7 @@
           "language": "prefix"
         },
         "valueSource": {
-          "columnName": "uir_adr_ADRESA_KOD",
+          "columnName": "id",
           "source": "column"
         }
       },
@@ -194,7 +194,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -209,7 +209,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -233,12 +233,9 @@
           },
           "values": [
             {
-              "transformation": {
-                "expression": "\"<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT (\" + cells[\"lon\"].value + \" \" + cells[\"lat\"].value + \")\"",
-                "language": "grel"
-              },
               "valueSource": {
-                "source": "row_index"
+                "columnName": "geom",
+                "source": "column"
               },
               "valueType": {
                 "type": "datatype_literal",
@@ -263,7 +260,7 @@
           "language": "prefix"
         },
         "valueSource": {
-          "columnName": "uir_adr_ADRESA_KOD",
+          "columnName": "id",
           "source": "column"
         }
       },
@@ -352,7 +349,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -370,7 +367,7 @@
           "language": "prefix"
         },
         "valueSource": {
-          "columnName": "uir_adr_ADRESA_KOD",
+          "columnName": "id",
           "source": "column"
         }
       },
@@ -459,7 +456,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -477,7 +474,7 @@
           "language": "prefix"
         },
         "valueSource": {
-          "columnName": "uir_adr_ADRESA_KOD",
+          "columnName": "id",
           "source": "column"
         }
       },
@@ -590,7 +587,7 @@
           "language": "prefix"
         },
         "valueSource": {
-          "columnName": "uir_adr_ADRESA_KOD",
+          "columnName": "id",
           "source": "column"
         }
       },
@@ -703,7 +700,7 @@
           "language": "prefix"
         },
         "valueSource": {
-          "columnName": "uir_adr_ADRESA_KOD",
+          "columnName": "id",
           "source": "column"
         }
       },
@@ -1044,7 +1041,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -1073,7 +1070,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -1102,7 +1099,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -1149,7 +1146,7 @@
           "language": "prefix"
         },
         "valueSource": {
-          "columnName": "uir_adr_ADRESA_KOD",
+          "columnName": "id",
           "source": "column"
         }
       },
@@ -1186,7 +1183,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -1215,7 +1212,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -1273,7 +1270,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -1291,7 +1288,7 @@
           "language": "prefix"
         },
         "valueSource": {
-          "columnName": "uir_adr_ADRESA_KOD",
+          "columnName": "id",
           "source": "column"
         }
       },
@@ -1328,7 +1325,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -1357,7 +1354,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -1415,7 +1412,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -1433,7 +1430,7 @@
           "language": "prefix"
         },
         "valueSource": {
-          "columnName": "uir_adr_ADRESA_KOD",
+          "columnName": "id",
           "source": "column"
         }
       },
@@ -1470,7 +1467,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -1499,7 +1496,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -1557,7 +1554,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -1575,7 +1572,7 @@
           "language": "prefix"
         },
         "valueSource": {
-          "columnName": "uir_adr_ADRESA_KOD",
+          "columnName": "id",
           "source": "column"
         }
       },
@@ -1612,7 +1609,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -1641,7 +1638,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -1699,7 +1696,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -1717,7 +1714,7 @@
           "language": "prefix"
         },
         "valueSource": {
-          "columnName": "uir_adr_ADRESA_KOD",
+          "columnName": "id",
           "source": "column"
         }
       },
@@ -1754,7 +1751,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -1783,7 +1780,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "uir_adr_ADRESA_KOD",
+                "columnName": "id",
                 "source": "column"
               },
               "valueType": {
@@ -1830,7 +1827,7 @@
           "language": "prefix"
         },
         "valueSource": {
-          "columnName": "uir_adr_ADRESA_KOD",
+          "columnName": "id",
           "source": "column"
         }
       },
