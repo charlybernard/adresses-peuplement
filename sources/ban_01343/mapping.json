@@ -374,7 +374,13 @@
                 "source": "column"
               },
               "valueType": {
-                "type": "literal"
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "fr"
+                  }
+                }
               }
             }
           ]

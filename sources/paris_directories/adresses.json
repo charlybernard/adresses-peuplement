@@ -1,0 +1,156 @@
+{
+	"addresses": [{
+			"label": "situé sur le blv. de Clichy, dans la partie comprise entre la place Blanche et la rue Fontaine",
+            "date":"1850-01-01T00:00:00",
+            "lang":"fr",
+            "target": null,
+			"landmarks": {
+				"bd_clichy": {
+					"label": "blv. de Clichy",
+					"type": "thoroughfare"
+				},
+				"pl_blanche": {
+					"label": "place Blanche",
+					"type": "thoroughfare"
+				}, 
+				"rue_fontaine": {
+				"label": "rue Fontaine",
+				"type": "thoroughfare"
+				}
+			},
+			"spatial_relations": [
+				["sur", null, ["bd_clichy"]],
+				["dans la partie comprise entre", null, ["pl_blanche", "rue_fontaine"]]
+			]
+		},
+		{
+			"label": "au centre de la capitale, entre le Palais-Royal et les Tuileries, à proximité des principaux théâtres",
+            "date":"1850-01-01T00:00:00",
+            "lang":"fr",
+            "target": null,
+            "landmarks": {
+				"cap": {
+				"label": "capitale",
+				"type": "city"
+				}, 
+				"palais_royal": {
+					"label": "Palais-Royal",
+					"type": "structure"
+				},
+				"tuileries": {
+					"label": "les Tuileries",
+					"type": "structure"
+				},
+				"prin_theatres": {
+					"label": "principaux théâtres",
+					"type": "structure"
+				}
+			},
+			"spatial_relations": [
+				["au centre de", null, ["cap"]],
+				["entre", null, ["palais_royal", "tuileries"]],
+				["à proximité des", null, ["prin_theatres"]]
+			]
+		},
+		{
+			"label": "3 rue de la vieille place aux veaux, Paris",
+            "date":"1850-01-01T00:00:00",
+            "lang":"fr",
+            "target": "3_hn",
+            "landmarks": {
+				"3_hn": {
+					"label": "3",
+					"type": "housenumber"
+				}, 
+				"rue_vpv": {
+					"label": "rue de la vieille place aux veaux",
+					"type": "thoroughfare"
+				},
+				"paris": {
+					"label": "Paris",
+					"type": "city"
+				}
+			},
+			"spatial_relations": [
+				["est similaire à", "3_hn", ["3_hn"]],
+				["le long de", "3_hn", ["rue_vpv"]],
+				["dans", "3_hn", ["paris"]]
+			]
+		},
+		{
+			"label": "Panorama national des Champs-Elysees, entre le cours de la Reine et le grand carre des fêtes"
+		},
+		{
+			"label": "Galerie Vivienne, en entrant par la rue Vivienne, le premier grand escalier à gauche"
+		},
+		{
+			"label": "Au chantier de la Victoire, boulevart des Invalides, au coin de la rue de Sèvres"
+		},
+		{
+			"label": "Jardin du Palais-Royal, pavillon de Foy, à droite de la rotonde, côté du théâtre"
+		},
+		{
+			"label": "Situé sur les trottoirs de la rue St-Charles, entre les rues de Javel et Cauchy"
+		},
+		{
+			"label": "avenue de Neuilly, rond-point de l’Arc-de-Triomphe, dans la cité de l’Etoile"
+		},
+		{
+			"label": "Rive droite de la Seine de la pointe orientale de l’ile Louviers au Pont-Neuf"
+		},
+		{
+			"label": "Sous les colonades du Theâtre Français, en face la petite rue du Rempart"
+		},
+		{
+			"label": "chemin de ronde de la barr. des Trois-Couronnes à celle de Ménilmontant"
+		},
+		{
+			"label": "boul. du Prince Eugène. entre la rue St-Sebastien et la rue des Amandiers"
+		},
+		{
+			"label": "aux Batignolles, sur le boulev. extér., entre les barr. Clichy et Monceaux"
+		},
+		{
+			"label": "maison de la Belle-Jardiniére, quai aux Fleurs, coin de la rue de la Cité"
+		},
+		{
+			"label": "boulevard exterieur de la barr. des Deux-Moulins, maison dité de la Jamaique"
+		},
+		{
+			"label": "en face les guichets de la galerie du Louvre, en-dessous du pont des Arts"
+		},
+		{
+			"label": "près la barr. de l’Etoile, chemin de ronde de la barrière de Neuilly"
+		},
+		{
+			"label": "R. de la Harpe, maison de l’épicier , en face la petite rue de Richelieu"
+		},
+		{
+			"label": "péristyle Beaujolais, Palais-National, en face le pass. des Pavillons"
+		},
+		{
+			"label": "rue Ambroise Paré (clos Saint-Lazare), près le chemin de fer du Nord"
+		},
+		{
+			"label": "route de Suresnes, a la pointe du Grand Lac, au Bois de Boulogne"
+		},
+		{
+			"label": "Boulev. et Div. du Temple, au coin de la R. Saintonge"
+		},
+		{
+			"label": "carré des Champs- Elysées (droite), pavillon Marigny"
+		},
+		{
+			"label": "à Bercy, place Cabanis, en face la barrière de Bercy"
+		},
+		{
+			"label": "au ministère des Colonies, pavillon de Flore (Tuileries)"
+		},
+		{
+			"label": "à la grille du gr. escalier du Palais du Tribunat"
+		},
+		{
+			"label": "petite rue St-Pierre-Popincourt, ruelle des Lillas"
+		}
+	]
+}
