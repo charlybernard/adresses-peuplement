@@ -1,6 +1,7 @@
 # addresses_from_sources
 Population de l'ontologie de modélisation des adresses
 
+## Dossier `sources`
 Chaque dossier dans `sources` permet de peupler l'ontologie selon un type de source donnée :
 * `ban_01343` contient des adresses issues de la [BAN (Base Nationale Adresse)](https://adresse.data.gouv.fr/base-adresse-nationale) d'une petite commune ; 
 * `ban_paris` contient des adresses de Paris issues de la [BAN (Base Nationale Adresse)](https://adresse.data.gouv.fr/base-adresse-nationale) ;
@@ -17,3 +18,6 @@ Pour peupler l'ontologie pour chaque dossier, il faut ouvrir le notebook `{nom_d
 * [GraphDB](https://graphdb.ontotext.com/) qui permet de stocker et de travailler sur des graphes de connaissance. Une variable est associée au logiciel : `graphdb_url` qui est l'URL de l'application web. Le procédé est similaire à celui de `ontorefine_url` pour trouver sa valeur.
 
 ![Interface d'OntoRefine avec les boutons \`Open Refine web application\` et \`Open CLI directory\`](./img/interface_ontorefine.png)
+
+## Dossier `code`
+Le dossier `code` comporte plusieurs fichiers python qui décrivent des fonctions permettant de faire le processus indiqué dans un notebook. 
