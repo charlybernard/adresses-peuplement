@@ -12,75 +12,100 @@ PREFIX gsp: <http://www.opengis.net/ont/geosparql#>
 PREFIX gspf: <http://www.opengis.net/def/function/geosparql/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
-DELETE {?sub ?p ?landmark. ?landmark ?p ?obj}
-INSERT {?sub ?p ?id. ?id ?p ?obj} WHERE{
-    SELECT ?landmark ?id ?obj ?p ?sub WHERE {
-  ?landmark addr:isLandmarkType addr:PostalCode;
-    rdfs:label ?l;
-    addr:within ?w.
-        {?landmark ?p ?obj}UNION{?sub ?p ?landmark}
-  {
-    SELECT ?l ?w ?id WHERE {
-      BIND(URI(CONCAT("http://rdf.geohistoricaldata.org/address#", STRUUID())) AS ?id)
-      {
-        SELECT DISTINCT ?l ?w WHERE {
-          ?s addr:isLandmarkType addr:PostalCode;
-            rdfs:label ?l;
-            addr:within ?w.
+DELETE {
+  ?sub ?p ?landmark.
+  ?landmark ?p ?obj.
+}
+INSERT {
+  ?sub ?p ?id.
+  ?id ?p ?obj.
+}
+WHERE {
+  SELECT ?landmark ?id ?obj ?p ?sub WHERE {
+    ?landmark addr:isLandmarkType addr:PostalCode;
+      rdfs:label ?l;
+      addr:within ?w.
+    { ?landmark ?p ?obj. }
+    UNION
+    { ?sub ?p ?landmark. }
+    {
+      SELECT ?l ?w ?id WHERE {
+        BIND(URI(CONCAT("http://rdf.geohistoricaldata.org/address#LM_", STRUUID())) AS ?id)
+        {
+          SELECT DISTINCT ?l ?w WHERE {
+            ?s addr:isLandmarkType addr:PostalCode;
+              rdfs:label ?l;
+              addr:within ?w.
+          }
+          GROUP BY ?l ?w
         }
-        GROUP BY ?l ?w
       }
     }
   }
-}
 };
-
-
-DELETE {?sub ?p ?landmark. ?landmark ?p ?obj}
-INSERT {?sub ?p ?id. ?id ?p ?obj} WHERE{
-    SELECT ?landmark ?id ?obj ?p ?sub WHERE {
-  ?landmark addr:isLandmarkType addr:City;
-    rdfs:label ?l;
-    addr:within ?w.FILTER (lang(?l) = 'fr')
-        {?landmark ?p ?obj}UNION{?sub ?p ?landmark}
-  {
-    SELECT ?l ?w ?id WHERE {
-      BIND(URI(CONCAT("http://rdf.geohistoricaldata.org/address#", STRUUID())) AS ?id)
-      {
-        SELECT DISTINCT ?l ?w WHERE {
-          ?s addr:isLandmarkType addr:City;
-            rdfs:label ?l;
-            addr:within ?w.
-                        FILTER (lang(?l) = 'fr')
+DELETE {
+  ?sub ?p ?landmark.
+  ?landmark ?p ?obj.
+}
+INSERT {
+  ?sub ?p ?id.
+  ?id ?p ?obj.
+}
+WHERE {
+  SELECT ?landmark ?id ?obj ?p ?sub WHERE {
+    ?landmark addr:isLandmarkType addr:City;
+      rdfs:label ?l;
+      addr:within ?w.
+    FILTER((LANG(?l)) = "fr")
+    { ?landmark ?p ?obj. }
+    UNION
+    { ?sub ?p ?landmark. }
+    {
+      SELECT ?l ?w ?id WHERE {
+        BIND(URI(CONCAT("http://rdf.geohistoricaldata.org/address#LM_", STRUUID())) AS ?id)
+        {
+          SELECT DISTINCT ?l ?w WHERE {
+            ?s addr:isLandmarkType addr:City;
+              rdfs:label ?l;
+              addr:within ?w.
+            FILTER((LANG(?l)) = "fr")
+          }
+          GROUP BY ?l ?w
         }
-        GROUP BY ?l ?w
       }
     }
   }
-}
 };
-
-DELETE {?sub ?p ?landmark. ?landmark ?p ?obj}
-INSERT {?sub ?p ?id. ?id ?p ?obj} WHERE{
-    SELECT ?landmark ?id ?obj ?p ?sub WHERE {
-  ?landmark addr:isLandmarkType addr:Thoroughfare;
-    rdfs:label ?l;
-    addr:within [addr:within ?w].
-        FILTER (lang(?l) = 'fr')
-        {?landmark ?p ?obj}UNION{?sub ?p ?landmark}
-  {
-    SELECT ?l ?w ?id WHERE {
-      BIND(URI(CONCAT("http://rdf.geohistoricaldata.org/address#", STRUUID())) AS ?id)
-      {
-        SELECT DISTINCT ?l ?w WHERE {
-          ?s addr:isLandmarkType addr:Thoroughfare;
-            rdfs:label ?l;
-            addr:within [addr:within ?w].
-                        FILTER (lang(?l) = 'fr')
+DELETE {
+  ?sub ?p ?landmark.
+  ?landmark ?p ?obj.
+}
+INSERT {
+  ?sub ?p ?id.
+  ?id ?p ?obj.
+}
+WHERE {
+  SELECT ?landmark ?id ?obj ?p ?sub WHERE {
+    ?landmark addr:isLandmarkType addr:Thoroughfare;
+      rdfs:label ?l;
+      addr:within [addr:within ?w].
+    FILTER((LANG(?l)) = "fr")
+    { ?landmark ?p ?obj. }
+    UNION
+    { ?sub ?p ?landmark. }
+    {
+      SELECT ?l ?w ?id WHERE {
+        BIND(URI(CONCAT("http://rdf.geohistoricaldata.org/address#LM_", STRUUID())) AS ?id)
+        {
+          SELECT DISTINCT ?l ?w WHERE {
+            ?s addr:isLandmarkType addr:Thoroughfare;
+              rdfs:label ?l;
+              addr:within [addr:within ?w].
+            FILTER((LANG(?l)) = "fr")
+          }
+          GROUP BY ?l ?w
         }
-        GROUP BY ?l ?w
       }
     }
   }
-}
 }

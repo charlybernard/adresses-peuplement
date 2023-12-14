@@ -25,7 +25,7 @@
           "values": [
             {
               "transformation": {
-                "expression": "cells[\"numero\"].value + if(cells[\"rep\"].value, cells[\"rep\"].value, \"\") + \" \" + cells[\"nom_voie\"].value + \", \" + cells[\"code_postal\"].value + \" \" + cells[\"nom_commune\"].value",
+                "expression": "cells[\"numero\"].value + if(cells[\"rep\"].value != null, cells[\"rep\"].value, \"\") + \" \" + cells[\"nom_voie\"].value + \", \" + cells[\"code_postal\"].value + \" \" + cells[\"nom_commune\"].value",
                 "language": "grel"
               },
               "valueSource": {
@@ -454,7 +454,7 @@
           "values": [
             {
               "transformation": {
-                "expression": "cells[\"numero\"].value + if(cells[\"rep\"].value, cells[\"rep\"].value, \"\")",
+                "expression": "cells[\"numero\"].value + if(cells[\"rep\"].value != null, cells[\"rep\"].value, \"\")",
                 "language": "grel"
               },
               "valueSource": {
