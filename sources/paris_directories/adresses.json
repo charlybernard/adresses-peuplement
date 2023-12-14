@@ -103,79 +103,535 @@
 			]
 		},
 		{
-			"label": "Panorama national des Champs-Elysees, entre le cours de la Reine et le grand carre des fêtes"
+			"label": "Panorama national des Champs-Elysees, entre le cours de la Reine et le grand carre des fêtes",
+			"lang":"fr",
+            "target": "pnce",
+			"landmarks": {
+				"pnce": {
+					"label": "Panorama national des Champs-Elysees",
+					"type": "structure"
+				}, 
+				"cours_reine": {
+					"label": "cours de la Reine",
+					"type": "thoroughfare"
+				},
+				"gc_fetes": {
+					"label": "grand carre des fêtes",
+					"type": "thoroughfare"
+				}
+			},
+			"spatial_relations": [
+				["est similaire à", "pnce", ["pnce"]],
+				["entre", "pnce", ["cours_reine", "gc_fetes"]]
+			]
 		},
 		{
-			"label": "Galerie Vivienne, en entrant par la rue Vivienne, le premier grand escalier à gauche"
+			"label": "Galerie Vivienne, en entrant par la rue Vivienne, le premier grand escalier à gauche",
+			"lang":"fr",
+            "target": "gv",
+			"landmarks": {
+				"gv": {
+					"label": "Galerie Vivienne",
+					"type": "thoroughfare"
+				}, 
+				"rue_vivienne": {
+					"label": "rue Vivienne",
+					"type": "thoroughfare"
+				},
+				"pg_escalier": {
+					"label": "premier grand escalier",
+					"type": "structure"
+				}
+			},
+			"spatial_relations": [
+				["est similaire à", "gv", ["gv"]],
+				["en entrant par", "gv", ["rue_vivienne"]],
+				["à gauche", "gv", ["pg_escalier"]]
+			]
 		},
 		{
-			"label": "Au chantier de la Victoire, boulevart des Invalides, au coin de la rue de Sèvres"
+			"label": "Au chantier de la Victoire, boulevart des Invalides, au coin de la rue de Sèvres",
+			"lang":"fr",
+            "target": "chantier_victoire",
+			"landmarks": {
+				"chantier_victoire": {
+					"label": "chantier de la Victoire",
+					"type": "structure"
+				}, 
+				"bd_invalides": {
+					"label": "boulevart des Invalides",
+					"type": "thoroughfare"
+				},
+				"rue_sevres": {
+					"label": "rue de Sèvres",
+					"type": "thoroughfare"
+				}
+			},
+			"spatial_relations": [
+				["est similaire à", "chantier_victoire", ["chantier_victoire"]],
+				["le long de", "chantier_victoire", ["bd_invalides"]],
+				["au coin de", "chantier_victoire", ["bd_invalides", "rue_sevres"]]
+			]
 		},
 		{
-			"label": "Jardin du Palais-Royal, pavillon de Foy, à droite de la rotonde, côté du théâtre"
+			"label": "Situé sur les trottoirs de la rue St-Charles, entre les rues de Javel et Cauchy",
+			"lang":"fr",
+            "target": null,
+			"landmarks": {
+				"trot_rue_st_charles": {
+					"label": "trottoirs de la rue St-Charles",
+					"type": "structure"
+				}, 
+				"rue_javel": {
+					"label": "rue de Javel",
+					"type": "thoroughfare"
+				},
+				"rue_cauchy": {
+					"label": "rue Cauchy",
+					"type": "thoroughfare"
+				}
+			},
+			"spatial_relations": [
+				["sur", null, ["trot_rue_st_charles"]],
+				["entre", null, ["rue_javel", "rue_cauchy"]]
+			]
 		},
 		{
-			"label": "Situé sur les trottoirs de la rue St-Charles, entre les rues de Javel et Cauchy"
+			"label": "avenue de Neuilly, rond-point de l’Arc-de-Triomphe, dans la cité de l’Etoile",
+			"lang":"fr",
+            "target": null,
+			"landmarks": {
+				"av_neuilly": {
+					"label": "avenue de Neuilly",
+					"type": "thoroughfare"
+				}, 
+				"rp_arc_triomphe": {
+					"label": "rond-point de l’Arc-de-Triomphe",
+					"type": "thoroughfare"
+				},
+				"cite_etoile": {
+					"label": "cité de l’Etoile",
+					"type": "thoroughfare"
+				}
+			},
+			"spatial_relations": [
+				["le long de", null, ["av_neuilly"]],
+				["le long de", null, ["rp_arc_triomphe"]],
+				["dans", null, ["cite_etoile"]]
+			]
 		},
 		{
-			"label": "avenue de Neuilly, rond-point de l’Arc-de-Triomphe, dans la cité de l’Etoile"
+			"label": "Rive droite de la Seine de la pointe orientale de l’ile Louviers au Pont-Neuf",
+			"lang":"fr",
+            "target": null,
+			"landmarks": {
+				"rd_seine": {
+					"label": "Rive droite de la Seine",
+					"type": "structure"
+				}, 
+				"po_ile_louviers": {
+					"label": "pointe orientale de l’ile Louviers",
+					"type": "structure"
+				},
+				"pont_neuf": {
+					"label": "Pont-Neuf",
+					"type": "structure"
+				}
+			},
+			"spatial_relations": [
+				["le long de", null, ["rd_seine"]],
+				["de ... à", null, ["po_ile_louviers", "pont_neuf"]]
+			]
 		},
 		{
-			"label": "Rive droite de la Seine de la pointe orientale de l’ile Louviers au Pont-Neuf"
+			"label": "Sous les colonades du Theâtre Français, en face la petite rue du Rempart",
+			"lang":"fr",
+            "target": null,
+			"landmarks": {
+				"col_theatre_fr": {
+					"label": "colonades du Theâtre Français",
+					"type": "structure"
+				}, 
+				"pr_rempart": {
+					"label": "petite rue du Rempart",
+					"type": "thoroughfare"
+				}
+			},
+			"spatial_relations": [
+				["sous", null, ["col_theatre_fr"]],
+				["en face de", null, ["pr_rempart"]]
+			]
 		},
 		{
-			"label": "Sous les colonades du Theâtre Français, en face la petite rue du Rempart"
+			"label": "chemin de ronde de la barr. des Trois-Couronnes à celle de Ménilmontant",
+			"lang":"fr",
+            "target": null,
+			"landmarks": {
+				"chb_trois_couronnes": {
+					"label": "chemin de ronde de la barr. des Trois-Couronnes",
+					"type": "structure"
+				}, 
+				"chb_menilmontant": {
+					"label": "chemin de ronde de la barr. de Ménilmontant",
+					"type": "thoroughfare"
+				}
+			},
+			"spatial_relations": [
+				["de ... à", null, ["chb_trois_couronnes", "chb_menilmontant"]]
+			]
 		},
 		{
-			"label": "chemin de ronde de la barr. des Trois-Couronnes à celle de Ménilmontant"
+			"label": "boul. du Prince Eugène. entre la rue St-Sebastien et la rue des Amandiers",
+			"lang":"fr",
+            "target": null,
+			"landmarks": {
+				"bd_prince_eugene": {
+					"label": "boul. du Prince Eugène",
+					"type": "thoroughfare"
+				}, 
+				"rue_st_sebastien": {
+					"label": "rue St-Sebastien",
+					"type": "thoroughfare"
+				},
+				"rue_amandiers": {
+					"label": "rue des Amandiers",
+					"type": "thoroughfare"
+				}
+			},
+			"spatial_relations": [
+				["le long de", null, ["bd_prince_eugene"]],
+				["entre", null, ["rue_st_sebastien", "rue_amandiers"]]
+			]
 		},
 		{
-			"label": "boul. du Prince Eugène. entre la rue St-Sebastien et la rue des Amandiers"
+			"label": "aux Batignolles, sur le boulev. extér., entre les barr. Clichy et Monceaux",
+			"lang":"fr",
+            "target": null,
+			"landmarks": {
+				"batignolles": {
+					"label": "Les Batignolles",
+					"type": "district"
+				}, 
+				"bd_ext": {
+					"label": "boulev. extér.",
+					"type": "thoroughfare"
+				},
+				"barr_clichy": {
+					"label": "barr. Clichy",
+					"type": "structure"
+				},
+				"barr_monceaux": {
+					"label": "barr. Monceaux",
+					"type": "structure"
+				}
+			},
+			"spatial_relations": [
+				["dans", null, ["batignolles"]],
+				["sur", null, ["bd_ext"]],
+				["entre", null, ["barr_clichy", "barr_monceaux"]]
+			]
+				
 		},
 		{
-			"label": "aux Batignolles, sur le boulev. extér., entre les barr. Clichy et Monceaux"
+			"label": "maison de la Belle-Jardiniére, quai aux Fleurs, coin de la rue de la Cité",
+			"lang":"fr",
+            "target": "maison_bj",
+			"landmarks": {
+				"maison_bj": {
+					"label": "maison de la Belle-Jardiniére",
+					"type": "structure"
+				}, 
+				"quai_fleurs": {
+					"label": "quai des Fleurs",
+					"type": "thoroughfare"
+				},
+				"rue_cite": {
+					"label": "rue de la Cité",
+					"type": "structure"
+				}
+			},
+			"spatial_relations": [
+				["est similaire à", "maison_bj", ["maison_bj"]],
+				["le long de", "maison_bj", ["quai_fleurs"]],
+				["coin", "maison_bj", ["quai_fleurs", "rue_cite"]]
+			]
 		},
 		{
-			"label": "maison de la Belle-Jardiniére, quai aux Fleurs, coin de la rue de la Cité"
+			"label": "boulevard exterieur de la barr. des Deux-Moulins, maison dité de la Jamaique",
+			"lang":"fr",
+            "target": "maison_jamaique",
+			"landmarks": {
+				"bd_ext_bdm": {
+					"label": "boulevard exterieur de la barr. des Deux-Moulins",
+					"type": "thoroughfare"
+				}, 
+				"maison_jamaique": {
+					"label": "maison dité de la Jamaique",
+					"type": "structure"
+				}
+			},
+			"spatial_relations": [
+				["le long de", "maison_jamaique", ["bd_ext_bdm"]],
+				["est similaire à", "maison_jamaique", ["maison_jamaique"]]
+			]
 		},
 		{
-			"label": "boulevard exterieur de la barr. des Deux-Moulins, maison dité de la Jamaique"
+			"label": "en face les guichets de la galerie du Louvre, en-dessous du pont des Arts",
+			"lang":"fr",
+            "target": null,
+			"landmarks": {
+				"guichets_gl": {
+					"label": "les guichets de la galerie du Louvre",
+					"type": "structure"
+				}, 
+				"pont_arts": {
+					"label": "pont des Arts",
+					"type": "structure"
+				}
+			},
+			"spatial_relations": [
+				["en face de", null, ["guichets_gl"]],
+				["en-dessous de", null, ["pont_arts"]]
+			]
 		},
 		{
-			"label": "en face les guichets de la galerie du Louvre, en-dessous du pont des Arts"
+			"label": "près la barr. de l’Etoile, chemin de ronde de la barrière de Neuilly",
+			"lang":"fr",
+            "target": null,
+			"landmarks": {
+				"barr_etoile": {
+					"label": "barr. de l’Etoile",
+					"type": "structure"
+				}, 
+				"crb_neuilly": {
+					"label": "chemin de ronde de la barrière de Neuilly",
+					"type": "thoroughfare"
+				}
+			},
+			"spatial_relations": [
+				["près de", null, ["barr_etoile"]],
+				["le long de", null, ["crb_neuilly"]]
+			]
 		},
 		{
-			"label": "près la barr. de l’Etoile, chemin de ronde de la barrière de Neuilly"
+			"label": "R. de la Harpe, maison de l’épicier, en face la petite rue de Richelieu",
+			"lang":"fr",
+            "target": "maison_epicier",
+			"landmarks": {
+				"rue_harpe": {
+					"label": "R. de la Harpe",
+					"type": "thoroughfare"
+				}, 
+				"maison_epicier": {
+					"label": "maison de l'épicier",
+					"type": "structure"
+				}, 
+				"pr_richelieu": {
+					"label": "petite rue de Richelieu",
+					"type": "thoroughfare"
+				}
+			},
+			"spatial_relations": [
+				["le long de", "maison_epicier", ["rue_harpe"]],
+				["est similaire à", "maison_epicier", ["maison_epicier"]],
+				["en face de", "maison_epicier", ["pr_richelieu"]]
+			]
 		},
 		{
-			"label": "R. de la Harpe, maison de l’épicier , en face la petite rue de Richelieu"
+			"label": "péristyle Beaujolais, Palais-National, en face le pass. des Pavillons",
+			"lang":"fr",
+            "target": "peri_beaujolais",
+			"landmarks": {
+				"peri_beaujolais": {
+					"label": "péristyle Beaujolais",
+					"type": "thoroughfare"
+				}, 
+				"palais_national": {
+					"label": "Palais-National",
+					"type": "structure"
+				}, 
+				"pass_pavillons": {
+					"label": "pass. des Pavillons",
+					"type": "thoroughfare"
+				}
+			},
+			"spatial_relations": [
+				["est similaire à", "peri_beaujolais", ["rue_harpe"]],
+				["dans", "peri_beaujolais", ["palais_national"]],
+				["en face de", "peri_beaujolais", ["pass_pavillons"]]
+			]
 		},
 		{
-			"label": "péristyle Beaujolais, Palais-National, en face le pass. des Pavillons"
+			"label": "rue Ambroise Paré (clos Saint-Lazare), près le chemin de fer du Nord",
+			"lang":"fr",
+            "target": null,
+			"landmarks": {
+				"rue_pare": {
+					"label": "rue Ambroise Paré",
+					"type": "thoroughfare"
+				}, 
+				"clos_st_lazare": {
+					"label": "clos Saint-Lazare",
+					"type": "thoroughfare"
+				}, 
+				"cf_nord": {
+					"label": "chemin de fer du Nord",
+					"type": "structure"
+				}
+			},
+			"spatial_relations": [
+				["le long de", null, ["rue_pare"]],
+				["le long de", null, ["clos_st_lazare"]],
+				["près de", null, ["cf_nord"]]
+			]
 		},
 		{
-			"label": "rue Ambroise Paré (clos Saint-Lazare), près le chemin de fer du Nord"
+			"label": "route de Suresnes, a la pointe du Grand Lac, au Bois de Boulogne",
+			"lang":"fr",
+            "target": null,
+			"landmarks": {
+				"route_suresnes": {
+					"label": "route de Suresnes",
+					"type": "thoroughfare"
+				}, 
+				"pointe_gd_lac": {
+					"label": "pointe du Grand Lac",
+					"type": "structure"
+				}, 
+				"bois_boulogne": {
+					"label": "bois de Boulogne",
+					"type": "structure"
+				}
+			},
+			"spatial_relations": [
+				["le long de", null, ["rue_pare"]],
+				["à", null, ["pointe_gd_lac"]],
+				["dans", null, ["bois_boulogne"]]
+			]
 		},
 		{
-			"label": "route de Suresnes, a la pointe du Grand Lac, au Bois de Boulogne"
+			"label": "Boulev. et Div. du Temple, au coin de la R. Saintonge",
+			"lang":"fr",
+            "target": null,
+			"landmarks": {
+				"bd_temple": {
+					"label": "Boulev. du Temple",
+					"type": "thoroughfare"
+				}, 
+				"div_temple": {
+					"label": "Div. du Temple",
+					"type": "district"
+				}, 
+				"rue_saintonge": {
+					"label": "R. Saintonge",
+					"type": "thoroughfare"
+				}
+			},
+			"spatial_relations": [
+				["le long de", null, ["bd_temple"]],
+				["dans", null, ["div_temple"]],
+				["coin", null, ["bd_temple", "rue_saintonge"]]
+			]
 		},
 		{
-			"label": "Boulev. et Div. du Temple, au coin de la R. Saintonge"
+			"label": "carré des Champs-Elysées (droite), pavillon Marigny",
+			"lang":"fr",
+            "target": "pav_marigny",
+			"landmarks": {
+				"carre_champs": {
+					"label": "carré des Champs-Elysées",
+					"type": "structure"
+				}, 
+				"pav_marigny": {
+					"label": "pavillon Marigny",
+					"type": "structure"
+				}
+			},
+			"spatial_relations": [
+				["à droite de", "pav_marigny", ["carre_champs"]],
+				["est similaire à", "pav_marigny", ["pav_marigny"]]
+			]
 		},
 		{
-			"label": "carré des Champs- Elysées (droite), pavillon Marigny"
+			"label": "à Bercy, place Cabanis, en face la barrière de Bercy",
+			"lang":"fr",
+            "target": null,
+			"landmarks": {
+				"bercy": {
+					"label": "Bercy",
+					"type": "district"
+				}, 
+				"pl_cabanis": {
+					"label": "place Cabanis",
+					"type": "thoroughfare"
+				}, 
+				"barr_bercy": {
+					"label": "barrière de Bercy",
+					"type": "structure"
+				}
+			},
+			"spatial_relations": [
+				["dans", null, ["bercy"]],
+				["sur", null, ["pl_cabanis"]],
+				["en face de", null, ["barr_bercy"]]
+			]
 		},
 		{
-			"label": "à Bercy, place Cabanis, en face la barrière de Bercy"
+			"label": "au ministère des Colonies, pavillon de Flore (Tuileries)",
+			"lang":"fr",
+            "target": "min_col",
+			"landmarks": {
+				"min_col": {
+					"label": "ministère des Colonies",
+					"type": "structure"
+				}, 
+				"pav_flore": {
+					"label": "pavillon de Flore",
+					"type": "structure"
+				}, 
+				"tuileries": {
+					"label": "Tuileries",
+					"type": "district"
+				}
+			},
+			"spatial_relations": [
+				["est similaire à", "min_col", ["min_col"]],
+				["dans", "min_col", ["pav_flore"]],
+				["dans", "min_col", ["tuileries"]]
+			]
 		},
 		{
-			"label": "au ministère des Colonies, pavillon de Flore (Tuileries)"
+			"label": "à la grille du gr. escalier du Palais du Tribunat",
+			"lang":"fr",
+            "target": "ggept",
+			"landmarks": {
+				"ggept": {
+					"label": "grille du gr. escalier du Palais du Tribunat",
+					"type": "structure"
+				}
+			},
+			"spatial_relations": [
+				["est similaire à", "ggept", ["ggept"]]
+			]
 		},
 		{
-			"label": "à la grille du gr. escalier du Palais du Tribunat"
-		},
-		{
-			"label": "petite rue St-Pierre-Popincourt, ruelle des Lillas"
+			"label": "petite rue St-Pierre-Popincourt, ruelle des Lillas",
+			"lang":"fr",
+            "target": null,
+			"landmarks": {
+				"pr_st_pierre_popincourt": {
+					"label": "petite rue St-Pierre-Popincourt",
+					"type": "thoroughfare"
+				}, 
+				"rle_lilas": {
+					"label": "ruelle des Lillas",
+					"type": "thoroughfare"
+				}
+			},
+			"spatial_relations": [
+				["le long de", null, ["pr_st_pierre_popincourt"]],
+				["le long de", null, ["rle_lilas"]]
+			]
 		}
 	]
 }
