@@ -78,6 +78,31 @@
 			]
 		},
 		{
+			"label": "R. de Seine, 1434. Unité.",
+			"date":"1792-01-01T00:00:00",
+            "lang":"fr",
+            "target": "1434_HN",
+			"landmarks": {
+				"1434_HN": {
+					"label": "1434",
+					"type": "housenumber"
+				}, 
+				"rue_seine": {
+					"label": "R. de Seine",
+					"type": "thoroughfare"
+				},
+				"unite": {
+					"label": "Unité",
+					"type": "district"
+				}
+			},
+			"spatial_relations": [
+				["est similaire à", "1434_HN", ["1434_HN"]],
+				["le long de", "1434_HN", ["rue_seine"]],
+				["dans", "1434_HN", ["unite"]]
+			]
+		},
+		{
 			"label": "Panorama national des Champs-Elysees, entre le cours de la Reine et le grand carre des fêtes"
 		},
 		{
