@@ -143,4 +143,37 @@ WHERE {
       }
     }
   }
+} ;
+
+DELETE {
+  ?sub ?p ?landmark.
+  ?landmark ?p ?obj.
 }
+INSERT {
+  ?sub ?p ?id.
+  ?id ?p ?obj.
+}
+WHERE {
+  SELECT ?landmark ?id ?obj ?p ?sub WHERE {
+    ?landmark addr:isLandmarkType addr:PostalCode;
+      rdfs:label ?l;
+      addr:within ?w.
+    { ?landmark ?p ?obj. }
+    UNION
+    { ?sub ?p ?landmark. }
+    {
+      SELECT ?l ?w ?id WHERE {
+        BIND(URI(CONCAT("http://rdf.geohistoricaldata.org/address#PC_", STRUUID())) AS ?id)
+        {
+          SELECT DISTINCT ?l ?w WHERE {
+            BIND(addr:P_Cesko AS ?w)
+            ?s addr:isLandmarkType addr:PostalCode;
+              rdfs:label ?l;
+              addr:within ?w.
+          }
+          GROUP BY ?l ?w
+        }
+      }
+    }
+  }
+};

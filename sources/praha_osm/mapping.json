@@ -190,7 +190,7 @@
           "values": [
             {
               "transformation": {
-                "expression": "addr:CS_",
+                "expression": "addr:CN_",
                 "language": "prefix"
               },
               "valueSource": {
@@ -363,7 +363,7 @@
       ],
       "subject": {
         "transformation": {
-          "expression": "addr:CS_",
+          "expression": "addr:CN_",
           "language": "prefix"
         },
         "valueSource": {
@@ -1004,7 +1004,7 @@
           "language": "prefix"
         },
         "valueSource": {
-          "columnName": "addr_postcode",
+          "columnName": "id",
           "source": "column"
         }
       },
