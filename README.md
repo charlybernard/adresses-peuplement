@@ -1,5 +1,5 @@
-# addresses_from_sources
-Population de l'ontologie de modélisation des adresses
+# Peuplement de l'ontologie des adresses
+Peuplement de l'ontologie de modélisation des adresses via différentes source
 
 ## Dossier `sources`
 Chaque dossier dans `sources` permet de peupler l'ontologie selon un type de source donnée :
